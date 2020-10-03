@@ -30,6 +30,13 @@ public class AddressServiceImpl implements AddressService{
 	public Address getDetail(Long id) throws Exception {
 		return addressDao.getDetail(id);
 	}
+
+	@Override
+	public void delete(Long id) throws Exception {
+		Object address = repositoryDao.getObject(id);
+		repositoryDao.delete(address);
+		
+	}
 	
 
 }

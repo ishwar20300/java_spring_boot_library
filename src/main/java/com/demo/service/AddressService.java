@@ -9,4 +9,6 @@ public interface AddressService {
 	
 	public Address getDetail(Long id)throws Exception;
 	
+	public void delete(Long id) throws Exception;
+	
 }

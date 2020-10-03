@@ -1,6 +1,7 @@
 package com.demo.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,22 @@ public class AddressController {
 		Response response = new Response();
 		try {
 			response.setResult(addressService.getDetail(addressId));
+			response.setStatus(200);
+			response.setMessage("Success");
+			return response;
+		} catch (Exception e) {
+			response.setStatus(500);
+			response.setMessage("Internal Error");
+			return response;
+		}
+	}
+	
+	@CrossOrigin
+	@DeleteMapping("/{addressId}")
+	public Response deleteObject(@PathVariable("addressId") Long addressId) {
+		Response response = new Response();
+		try {
+			addressService.delete(addressId);
 			response.setStatus(200);
 			response.setMessage("Success");
 			return response;

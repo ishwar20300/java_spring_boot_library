@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.demo.bean.Address;
+
 public class RepositoryDao {
 
 	@Autowired
@@ -32,7 +34,9 @@ public class RepositoryDao {
 	public void delete(Object object) throws Exception {
 		getSession().delete(object);
 	};
-
+	public Object getObject(Long id) throws Exception {
+		return getSession().get(Address.class, id);
+	};
 	protected DataSource getDataSource() {
 		return dataSource;
 	}
